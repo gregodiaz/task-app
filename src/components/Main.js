@@ -1,62 +1,61 @@
 import React from "react";
+import { Button, ButtonGroup, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function Main() {
   const navigate = useNavigate();
 
+  const styledButton = {
+    display: "flex",
+    fontSize: "5rem",
+    color: "#f2f2f2",
+  };
+
+  const buttons = [
+    <Button key="tasks" sx={styledButton} onClick={() => navigate("/tasks")}>
+      Tasks
+    </Button>,
+    <Button
+      key="statistics"
+      sx={styledButton}
+      onClick={() => navigate("/statistics")}
+    >
+      Statistics
+    </Button>,
+    <Button key="admin" sx={styledButton} onClick={() => navigate("/admin")}>
+      Admin
+    </Button>,
+  ];
+
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "90vh",
-        width: "90vw",
-        backgroundColor: "#2f2f2f",
+        "& > *": {
+          m: 5,
+        },
       }}
     >
-      <button
-        style={{
-          display: "block",
-          justifyContent: "center",
+      <ButtonGroup
+        size="large"
+        orientation="vertical"
+        aria-label="large vertical contained button group"
+        variant="text"
+        color="warning"
+        // fullWidth={true}
+        sx={{
+          display: "flex",
           alignItems: "center",
-          height: "15vh",
-          width: "35vw",
-          fontSize: "3rem",
-          color: "#2f2f2f",
+          // color options
+          // 'secondary'
+          // 'error'
+          // 'info'
+          // 'success'
+          // 'warning'
         }}
-        onClick={() => navigate("/tasks")}
       >
-        Tasks
-      </button>
-      <button
-        style={{
-          display: "block",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "15vh",
-          width: "35vw",
-          fontSize: "3rem",
-          color: "#2f2f2f",
-        }}
-        onClick={() => navigate("/statistics")}
-      >
-        Statistics
-      </button>
-      <button
-        style={{
-          display: "block",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "15vh",
-          width: "35vw",
-          fontSize: "3rem",
-          color: "#2f2f2f",
-        }}
-        onClick={() => navigate("/admin")}
-      >
-        Admin
-      </button>
-    </div>
+        {buttons}
+      </ButtonGroup>
+    </Box>
   );
 }
