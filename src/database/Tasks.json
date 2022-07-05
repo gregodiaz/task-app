@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "priority": 0,
+    "state": "required",
+    "responsible": {
+      "id": 3,
+      "firstname": "gregorio",
+      "lastname": "diaz",
+      "active": true
+    },
+    "client": {
+      "id": 1,
+      "businessName": "Hogar Gonzalez",
+      "cuit": "26811330100",
+      "active": true,
+      "owner": "Gonzalez, Tiago",
+      "franchises": 5
+    },
+    "title": "Task 1",
+    "updates": [
+      {
+        "autor": {
+          "id": 3,
+          "firstname": "gregorio",
+          "lastname": "diaz",
+          "active": true
+        },
+        "createdAt": "14/07/22 - 16:55",
+        "description": "Description of the last action or comment on this task",
+        "type": "Action"
+      },
+      {
+        "autor": {
+          "id": 2,
+          "firstName": "Franco",
+          "lastName": "Burtoli",
+          "active": true
+        },
+        "createdAt": "14/07/22 - 17:35",
+        "description": "Another user comments on this task",
+        "type": "Commentary"
+      }
+    ],
+    "autor": {
+      "id": 3,
+      "firstname": "gregorio",
+      "lastname": "diaz",
+      "active": true
+    },
+    "createdAt": "14/07/22 - 16:53"
+  }
+]

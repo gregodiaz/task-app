@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "businessName": "Hogar Gonzalez",
+    "cuit": "26811330100",
+    "active": true,
+    "owner": "Gonzalez, Tiago",
+    "franchises": 5
+  },
+  {
+    "id": 2,
+    "businessName": "Hogar Gomez",
+    "cuit": "25052266161",
+    "active": true,
+    "owner": "Gomez, Tomas",
+    "franchises": 7
+  },
+  {
+    "id": 3,
+    "businessName": "Supermercado Lopez",
+    "cuit": "26341841045",
+    "active": true,
+    "owner": "Lopez, Juan",
+    "franchises": 1
+  }
+]

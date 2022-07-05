@@ -1,18 +1,21 @@
 import React from "react";
+import ResponsiveAppBar from "./NavBar.js";
 
-export default function Tasks() {
+export default function Admin() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "90vh",
-        width: "90vw",
-        backgroundColor: "#2f2f2f",
-      }}
-    >
-      Tasks
+    <div>
+      <ResponsiveAppBar></ResponsiveAppBar>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "90vh",
+          width: "90vw",
+        }}
+      >
+        Task
+      </div>
     </div>
   );
 }

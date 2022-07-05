@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "firstName": "Gonzalo",
+    "lastName": "Sanchez",
+    "active": true
+  },
+  {
+    "id": 2,
+    "firstName": "Franco",
+    "lastName": "Burtoli",
+    "active": true
+  },
+  {
+    "id": 3,
+    "firstName": "Gregorio",
+    "lastName": "Diaz",
+    "active": true
+  },
+  {
+    "id": 4,
+    "firstName": "Eduardo",
+    "lastName": "Monges",
+    "active": true
+  },
+  {
+    "id": 5,
+    "firstName": "Lucas",
+    "lastName": "Diaz",
+    "active": true
+  }
+]
