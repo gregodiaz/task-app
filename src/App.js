@@ -13,12 +13,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/task-app" element={
-	<div>Hello World!</div>
-	}></Route>
-        <Route exact path="/" element={<Main />}></Route>
+        <Route exact path="/task-app" element={<Main />}></Route>
         <Route
-          exact path="/tasks"
+          exact path="/task-app/tasks"
           element={
             <div>
               <NavBar />
@@ -27,7 +24,7 @@ export default function App() {
           }
         ></Route>
         <Route
-          exact path="/statistics"
+          exact path="/task-app/statistics"
           element={
             <div>
               <NavBar />
@@ -36,7 +33,7 @@ export default function App() {
           }
         ></Route>
         <Route
-          exact path="/admin"
+          exact path="/task-app/admin"
           element={
             <div>
               <NavBar />
