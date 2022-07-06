@@ -1,5 +1,11 @@
 [
   {
+    "id": 0,
+    "firstName": "Everyone",
+    "lastName": "",
+    "active": true
+  },
+  {
     "id": 1,
     "firstName": "Gonzalo",
     "lastName": "Sanchez",
