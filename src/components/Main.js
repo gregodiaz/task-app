@@ -12,17 +12,25 @@ export default function Main() {
   };
 
   const buttons = [
-    <Button key="tasks" sx={styledButton} onClick={() => navigate("/tasks")}>
+    <Button
+      key="tasks"
+      sx={styledButton}
+      onClick={() => navigate("/task-app/tasks")}
+    >
       Tasks
     </Button>,
     <Button
       key="statistics"
       sx={styledButton}
-      onClick={() => navigate("/statistics")}
+      onClick={() => navigate("/task-app/statistics")}
     >
       Statistics
     </Button>,
-    <Button key="admin" sx={styledButton} onClick={() => navigate("/admin")}>
+    <Button
+      key="admin"
+      sx={styledButton}
+      onClick={() => navigate("/task-app/admin")}
+    >
       Admin
     </Button>,
   ];

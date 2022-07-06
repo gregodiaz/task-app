@@ -15,7 +15,8 @@ export default function App() {
       <Routes>
         <Route exact path="/task-app" element={<Main />}></Route>
         <Route
-          exact path="/task-app/tasks"
+          exact
+          path="/task-app/tasks"
           element={
             <div>
               <NavBar />
@@ -24,7 +25,8 @@ export default function App() {
           }
         ></Route>
         <Route
-          exact path="/task-app/statistics"
+          exact
+          path="/task-app/statistics"
           element={
             <div>
               <NavBar />
@@ -33,7 +35,8 @@ export default function App() {
           }
         ></Route>
         <Route
-          exact path="/task-app/admin"
+          exact
+          path="/task-app/admin"
           element={
             <div>
               <NavBar />

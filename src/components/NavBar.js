@@ -27,7 +27,9 @@ const NavBar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const [selectedUser, setSelectedUser] = useState(users[0].firstName);
-  const [selectedPage, setSelectedPage] = useState(capFirstLetter(window.location.pathname));
+  const [selectedPage, setSelectedPage] = useState(
+    capFirstLetter(window.location.pathname.slice(9))
+  );
 
   const handleUsers = (event) => {
     setSelectedUser(event.target.textContent);
@@ -36,7 +38,7 @@ const NavBar = () => {
   const handlePages = (event) => {
     setSelectedPage(event.target.textContent);
     handleCloseNavMenu();
-    navigate("/" + event.target.textContent);
+    navigate("/task-app/" + event.target.textContent);
   };
 
   const handleOpenNavMenu = (event) => {
@@ -81,7 +83,7 @@ const NavBar = () => {
             height: "9vh",
             width: "20vw",
             minWidth: 143,
-	    paddingLeft: 2,
+            paddingLeft: 2,
             borderTopLeftRadius: 43,
             borderBottomLeftRadius: 43,
           }}
@@ -127,8 +129,8 @@ const NavBar = () => {
             height: "9vh",
             width: "15vw",
             minWidth: 143,
-	    marginRight: 1,
-	    paddingLeft: 2,
+            marginRight: 1,
+            paddingLeft: 2,
             borderTopLeftRadius: 43,
             borderBottomLeftRadius: 43,
           }}
