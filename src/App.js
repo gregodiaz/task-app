@@ -13,6 +13,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route exact path="/task-app" element={
+	<div>Hello World!</div>
+	}></Route>
         <Route exact path="/" element={<Main />}></Route>
         <Route
           exact path="/tasks"
