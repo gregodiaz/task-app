@@ -6,8 +6,7 @@ export default function Main() {
   const navigate = useNavigate();
 
   const styledButton = {
-    display: "flex",
-    fontSize: "5rem",
+    fontSize: "calc(5vw + 2rem)",
     color: "#f2f2f2",
   };
 
@@ -39,9 +38,8 @@ export default function Main() {
     <Box
       sx={{
         display: "flex",
-        "& > *": {
-          m: 5,
-        },
+        alignItems: "center",
+        height: "100vh",
       }}
     >
       <ButtonGroup
@@ -50,17 +48,12 @@ export default function Main() {
         aria-label="large vertical contained button group"
         variant="text"
         color="warning"
-        // fullWidth={true}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          // color options
-          // 'secondary'
-          // 'error'
-          // 'info'
-          // 'success'
-          // 'warning'
-        }}
+        // 'warning'
+        // 'secondary'
+        // 'error'
+        // 'info'
+        // 'success'
+        sx={{ alignItems: "center" }}
       >
         {buttons}
       </ButtonGroup>

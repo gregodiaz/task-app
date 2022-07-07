@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button } from "./Button.js";
 import {
   AppBar,
   Box,
@@ -12,6 +11,7 @@ import {
   Container,
 } from "@mui/material";
 
+// database
 import users from "../database/users.json";
 
 const NavBar = () => {
@@ -55,6 +55,10 @@ const NavBar = () => {
     setAnchorElUser(null);
   };
 
+  useEffect(() => {
+    setSelectedPage(capFirstLetter(window.location.pathname.slice(9)));
+  }, [window.location.pathname]);
+
   return (
     <AppBar
       sx={{
@@ -69,9 +73,7 @@ const NavBar = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "right",
-          backgroundColor: "#2f2f2f",
           height: "9vh",
-          width: "100vw",
         }}
       >
         <Box
