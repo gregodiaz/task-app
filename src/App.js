@@ -1,49 +1,21 @@
-import "./App.css";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
 
 // components
-import Main from "./components/Main.js";
-import Task from "./components/Task.js";
-import Statistics from "./components/Statistics.js";
-import Admin from "./components/Admin.js";
-import NavBar from "./components/NavBar.js";
+import Main from "./components/Main";
+import Tasks from "./components/Tasks";
+import Statistics from "./components/Statistics";
+import Admin from "./components/Admin";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/task-app" element={<Main />}></Route>
-        <Route
-          exact
-          path="/task-app/tasks"
-          element={
-            <div>
-              <NavBar />
-              <Task />
-            </div>
-          }
-        ></Route>
-        <Route
-          exact
-          path="/task-app/statistics"
-          element={
-            <div>
-              <NavBar />
-              <Statistics />
-            </div>
-          }
-        ></Route>
-        <Route
-          exact
-          path="/task-app/admin"
-          element={
-            <div>
-              <NavBar />
-              <Admin />
-            </div>
-          }
-        ></Route>
+        <Route exact path="/task-app" element={<Main />} />
+        <Route exact path="/task-app/Tasks" element={<Tasks />} />
+        <Route exact path="/task-app/Statistics" element={<Statistics />} />
+        <Route exact path="/task-app/Admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );

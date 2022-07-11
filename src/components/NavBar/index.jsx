@@ -10,9 +10,10 @@ import {
   MenuItem,
   Container,
 } from "@mui/material";
+import Style from "./style.js";
 
 // database
-import users from "../database/users.json";
+import users from "../../database/users.json";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -38,7 +39,8 @@ const NavBar = () => {
   const handlePages = (event) => {
     setSelectedPage(event.target.textContent);
     handleCloseNavMenu();
-    navigate("/task-app/" + event.target.textContent);
+    navigate("/task-app/" + event.target.textContent.slice(1));
+    console.log(event.target.textContent)
   };
 
   const handleOpenNavMenu = (event) => {
@@ -60,36 +62,9 @@ const NavBar = () => {
   }, [window.location.pathname]);
 
   return (
-    <AppBar
-      sx={{
-        backgroundColor: "#2f2f2f",
-        width: "100vw",
-      }}
-      position="static"
-    >
-      <Container
-        fixed
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "right",
-          height: "9vh",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "linear-gradient(to right , #474747, #2f2f2f)",
-            height: "9vh",
-            width: "20vw",
-            minWidth: 143,
-            paddingLeft: 2,
-            borderTopLeftRadius: 43,
-            borderBottomLeftRadius: 43,
-          }}
-        >
+    <AppBar sx={Style().appBar}>
+      <Container fixed sx={Style().container}>
+        <Box sx={Style().box}>
           <IconButton
             onClick={handleOpenUserMenu}
             sx={{ p: 0, color: "#f2f2f2" }}
@@ -97,46 +72,24 @@ const NavBar = () => {
             {selectedUser}
           </IconButton>
           <Menu
-            sx={{
-              mt: "45px",
-            }}
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
+            anchorOrigin={Style().topAndRight}
+            transformOrigin={Style().topAndRight}
             keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
+            sx={{ mt: "45px" }}
+            anchorEl={anchorElUser}
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
           >
             {users
               .filter((user) => user.firstName !== selectedUser)
               .map((user) => (
-                <MenuItem key={user.id} onClick={handleUsers}>
+                <MenuItem sx={Style().menuItems} key={user.id} onClick={handleUsers}>
                   <Typography textAlign="center">{user.firstName}</Typography>
                 </MenuItem>
               ))}
           </Menu>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "linear-gradient(to right , #3d3d3d, #2f2f2f)",
-            height: "9vh",
-            width: "15vw",
-            minWidth: 143,
-            marginRight: 1,
-            paddingLeft: 2,
-            borderTopLeftRadius: 43,
-            borderBottomLeftRadius: 43,
-          }}
-        >
+        <Box sx={Style().box}>
           <IconButton
             onClick={handleOpenNavMenu}
             sx={{ p: 0, color: "#f2f2f2" }}
@@ -144,25 +97,19 @@ const NavBar = () => {
             {selectedPage}
           </IconButton>
           <Menu
-            sx={{ mt: "45px" }}
+            anchorOrigin={Style().topAndRight}
+            transformOrigin={Style().topAndRight}
             anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
             keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
+            sx={{ mt: "45px" }}
             open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
           >
             {pages
               .filter((page) => page !== selectedPage)
               .map((page, index) => (
-                <MenuItem key={page} onClick={handlePages}>
-                  <Typography textAlign="right">{page}</Typography>
+		<MenuItem sx={Style().menuItems} key={page} onClick={handlePages}>
+                  <Typography textAlign="right"> {page}</Typography>
                 </MenuItem>
               ))}
           </Menu>
