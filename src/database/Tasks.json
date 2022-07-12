@@ -5,8 +5,8 @@
     "state": "required",
     "responsible": {
       "id": 3,
-      "firstname": "gregorio",
-      "lastname": "diaz",
+      "firstName": "gregorio",
+      "lastName": "diaz",
       "active": true
     },
     "client": {
@@ -22,8 +22,8 @@
       {
         "autor": {
           "id": 3,
-          "firstname": "gregorio",
-          "lastname": "diaz",
+          "firstName": "gregorio",
+          "lastName": "diaz",
           "active": true
         },
         "createdAt": "14/07/22 - 16:55",
@@ -44,8 +44,8 @@
     ],
     "autor": {
       "id": 3,
-      "firstname": "gregorio",
-      "lastname": "diaz",
+      "firstName": "gregorio",
+      "lastName": "diaz",
       "active": true
     },
     "createdAt": "14/07/22 - 16:53"

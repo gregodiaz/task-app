@@ -18,6 +18,8 @@ import users from "../../database/users.json";
 const NavBar = () => {
   const navigate = useNavigate();
   const params = useParams();
+  const style = Style();
+
   const pages = ["Tasks", "Statistics", "Admin"];
   const capFirstLetter = (pageName) => {
     pageName = pageName.slice(1);
@@ -39,8 +41,7 @@ const NavBar = () => {
   const handlePages = (event) => {
     setSelectedPage(event.target.textContent);
     handleCloseNavMenu();
-    navigate("/task-app/" + event.target.textContent.slice(1));
-    console.log(event.target.textContent)
+    navigate("/task-app/" + event.target.textContent);
   };
 
   const handleOpenNavMenu = (event) => {
@@ -62,20 +63,18 @@ const NavBar = () => {
   }, [window.location.pathname]);
 
   return (
-    <AppBar sx={Style().appBar}>
-      <Container fixed sx={Style().container}>
-        <Box sx={Style().box}>
-          <IconButton
-            onClick={handleOpenUserMenu}
-            sx={{ p: 0, color: "#f2f2f2" }}
-          >
+    <AppBar sx={style.appBar}>
+      <Container sx={style.container}>
+        <Box sx={style.box}>
+          <IconButton onClick={handleOpenUserMenu} sx={style.iconButton}>
             {selectedUser}
           </IconButton>
           <Menu
-            anchorOrigin={Style().topAndRight}
-            transformOrigin={Style().topAndRight}
+            anchorOrigin={style.topAndRight}
+            transformOrigin={style.topAndRight}
+            sx={style.menu}
+            elevation={0}
             keepMounted
-            sx={{ mt: "45px" }}
             anchorEl={anchorElUser}
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
@@ -83,33 +82,35 @@ const NavBar = () => {
             {users
               .filter((user) => user.firstName !== selectedUser)
               .map((user) => (
-                <MenuItem sx={Style().menuItems} key={user.id} onClick={handleUsers}>
-                  <Typography textAlign="center">{user.firstName}</Typography>
+                <MenuItem
+                  sx={style.menuItems}
+                  key={user.id}
+                  onClick={handleUsers}
+                >
+                  <Typography>{user.firstName}</Typography>
                 </MenuItem>
               ))}
           </Menu>
         </Box>
-        <Box sx={Style().box}>
-          <IconButton
-            onClick={handleOpenNavMenu}
-            sx={{ p: 0, color: "#f2f2f2" }}
-          >
+        <Box sx={style.box}>
+          <IconButton onClick={handleOpenNavMenu} sx={style.iconButton}>
             {selectedPage}
           </IconButton>
           <Menu
-            anchorOrigin={Style().topAndRight}
-            transformOrigin={Style().topAndRight}
-            anchorEl={anchorElNav}
+            anchorOrigin={style.topAndRight}
+            transformOrigin={style.topAndRight}
+            sx={style.menu}
+            elevation={0}
             keepMounted
-            sx={{ mt: "45px" }}
+            anchorEl={anchorElNav}
             open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
           >
             {pages
               .filter((page) => page !== selectedPage)
-              .map((page, index) => (
-		<MenuItem sx={Style().menuItems} key={page} onClick={handlePages}>
-                  <Typography textAlign="right"> {page}</Typography>
+              .map((page) => (
+                <MenuItem sx={style.menuItems} key={page} onClick={handlePages}>
+                  <Typography>{page}</Typography>
                 </MenuItem>
               ))}
           </Menu>

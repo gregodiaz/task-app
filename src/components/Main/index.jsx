@@ -7,9 +7,10 @@ export default function Main() {
   const navigate = useNavigate();
   const navigateTo = (path) => navigate("/task-app/" + path);
   const pages = ["Tasks", "Statistics", "Admin"];
+  const style = Style();
 
   return (
-    <Box sx={Style().box}>
+    <Box sx={style.box}>
       <ButtonGroup
         size="large"
         orientation="vertical"
@@ -19,11 +20,7 @@ export default function Main() {
         sx={{ alignItems: "center" }}
       >
         {pages.map((page) => (
-          <Button
-            key={page}
-            sx={Style()[page]}
-	    onClick={() => navigateTo(page)}
-          >
+          <Button key={page} sx={style[page]} onClick={() => navigateTo(page)}>
             {page}
           </Button>
         ))}
