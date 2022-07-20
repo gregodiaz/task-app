@@ -6,8 +6,8 @@ import Style from "./style.js";
 export default function Main() {
   const navigate = useNavigate();
   const navigateTo = (path) => navigate("/task-app/" + path);
-  const pages = ["Tasks", "Statistics", "Admin"];
   const style = Style();
+  const pages = ["Tasks", "Statistics", "Admin"];
 
   return (
     <Box sx={style.box}>
