@@ -11,14 +11,16 @@ import {
   Container,
 } from "@mui/material";
 import Style from "./style.js";
-
-// database
-import users from "../../database/users.json";
+import users from "../../dbInit/users.json";
+import { useSelector, useDispatch } from "react-redux";
+import { changeUser } from '../../store/userStore/usersSlice.js'
 
 const NavBar = () => {
-  const navigate = useNavigate();
-  const params = useParams();
   const style = Style();
+  const params = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const usersState = useSelector((state) => state.users);
 
   const pages = ["Tasks", "Statistics", "Admin"];
   const capFirstLetter = (pageName) => {
