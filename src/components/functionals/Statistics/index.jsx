@@ -1,10 +1,8 @@
 import React from "react";
-import DefaultTemplate from "../DefaultTemplate";
-import Style from "./style.js";
+import DefaultTemplate from "../../presentionals/DefaultTemplate";
+import { style } from "./style.js";
 
 export default function Statistics() {
-  const style = Style()
-
   return (
     <DefaultTemplate
       children={

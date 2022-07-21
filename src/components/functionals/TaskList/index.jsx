@@ -1,13 +1,12 @@
-import React from "react";
-import DefaultTemplate from "../DefaultTemplate";
-import Style from "./style.js";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTask } from '../../store/taskStore/tasksSlice.js'
+import { addTask } from "../../../store/taskStore/tasksSlice.js";
+import DefaultTemplate from "../../presentionals/DefaultTemplate";
+import { style } from "./style.js";
 
 export default function Statistics() {
-  const tasksState = useSelector((state) => state.tasks);
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const style = Style();
 
   return (
     <DefaultTemplate

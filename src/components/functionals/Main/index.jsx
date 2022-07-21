@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, ButtonGroup, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Style from "./style.js";
+import { useDispatch } from "react-redux";
+import { changeUser } from "../../../store/userStore/usersSlice.js";
+import { style }  from "./style.js";
+import usersdb from "../../../dbInit/users.json";
+import tasksdb from "../../../dbInit/tasks.json";
 
 export default function Main() {
   const navigate = useNavigate();
   const navigateTo = (path) => navigate("/task-app/" + path);
-  const style = Style();
   const pages = ["Tasks", "Statistics", "Admin"];
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(changeUser(usersdb[0]));
+  }, []);
+  
   return (
     <Box sx={style.box}>
       <ButtonGroup

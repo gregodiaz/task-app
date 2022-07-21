@@ -1,23 +1,12 @@
-import { React, useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Typography,
-  Menu,
-  MenuIcon,
-  MenuItem,
-  Container,
-} from "@mui/material";
-import Style from "./style.js";
-import users from "../../dbInit/users.json";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppBar, Box, IconButton, Typography, Menu, MenuItem, Container } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { changeUser } from '../../store/userStore/usersSlice.js'
+import { changeUser } from "../../../store/userStore/usersSlice.js";
+import { style } from "./style.js";
+import users from "../../../dbInit/users.json";
 
 const NavBar = () => {
-  const style = Style();
-  const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const usersState = useSelector((state) => state.users);
@@ -31,13 +20,12 @@ const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const [selectedUser, setSelectedUser] = useState(users[0].firstName);
   const [selectedPage, setSelectedPage] = useState(
     capFirstLetter(window.location.pathname.slice(9))
   );
 
-  const handleUsers = (event) => {
-    setSelectedUser(event.target.textContent);
+  const handleUsers = (newUser) => {
+    dispatch(changeUser(newUser));
     handleCloseUserMenu();
   };
   const handlePages = (event) => {
@@ -62,14 +50,14 @@ const NavBar = () => {
 
   useEffect(() => {
     setSelectedPage(capFirstLetter(window.location.pathname.slice(9)));
-  }, [window.location.pathname]);
+  }, [usersState, window.location.pathname]);
 
   return (
     <AppBar sx={style.appBar}>
       <Container sx={style.container}>
         <Box sx={style.box}>
           <IconButton onClick={handleOpenUserMenu} sx={style.iconButton}>
-            {selectedUser}
+            {usersState[0].firstName}
           </IconButton>
           <Menu
             anchorOrigin={style.topAndRight}
@@ -82,12 +70,12 @@ const NavBar = () => {
             onClose={handleCloseUserMenu}
           >
             {users
-              .filter((user) => user.firstName !== selectedUser)
+              .filter((user) => user.firstName !== usersState[0].firstName)
               .map((user) => (
                 <MenuItem
                   sx={style.menuItems}
                   key={user.id}
-                  onClick={handleUsers}
+                  onClick={() => handleUsers(user)}
                 >
                   <Typography>{user.firstName}</Typography>
                 </MenuItem>
