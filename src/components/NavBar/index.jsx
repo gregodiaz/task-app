@@ -21,7 +21,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const usersState = useSelector((state) => state.users);
-
+  //TODO esta constante esta en mas de un lugar, se podria mover a un archivo de constantes
   const pages = ["Tasks", "Statistics", "Admin"];
   const capFirstLetter = (pageName) => {
     pageName = pageName.slice(1);
@@ -32,6 +32,7 @@ const NavBar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const [selectedUser, setSelectedUser] = useState(users[0].firstName);
+  //TODO este 9 queda medio rari, no se recomienda usar numeros magicos
   const [selectedPage, setSelectedPage] = useState(
     capFirstLetter(window.location.pathname.slice(9))
   );

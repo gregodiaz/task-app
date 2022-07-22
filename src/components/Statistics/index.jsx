@@ -4,7 +4,7 @@ import Style from "./style.js";
 
 export default function Statistics() {
   const style = Style()
-
+//TODO: cambiar a <DefaultTemplate><div><div/></DefaultTemplate>
   return (
     <DefaultTemplate
       children={
