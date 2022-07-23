@@ -1,13 +1,12 @@
 import React from "react";
 import { Button, ButtonGroup, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Style from "./style.js";
+import { style } from "./style.js";
+import { pages } from "../../../constants/";
 
 export default function Main() {
   const navigate = useNavigate();
-  const navigateTo = (path) => navigate("/task-app/" + path);
-  const style = Style();
-  const pages = ["Tasks", "Statistics", "Admin"];
+  const navigateTo = (page) => navigate("/task-app/" + page);
 
   return (
     <Box sx={style.box}>
