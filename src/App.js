@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 // components
-import Main from "./components/Main";
-import TaskList from "./components/TaskList";
-import Statistics from "./components/Statistics";
-import Admin from "./components/Admin";
+import Main from "./components/functionals/Main";
+import TaskList from "./components/functionals/TaskList";
+import Statistics from "./components/functionals/Statistics";
+import Admin from "./components/functionals/Admin";
 
 export default function App() {
   return (

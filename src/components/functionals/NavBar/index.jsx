@@ -1,69 +1,35 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Typography,
-  Menu,
-  MenuIcon,
-  MenuItem,
-  Container,
-} from "@mui/material";
-import Style from "./style.js";
-import users from "../../dbInit/users.json";
-import { useSelector, useDispatch } from "react-redux";
-import { changeUser } from '../../store/userStore/usersSlice.js'
+import { AppBar, Box, IconButton, Typography, Menu, MenuIcon, MenuItem, Container } from "@mui/material";
+import { style } from "./style.js";
+import { pages } from "../../../constants";
+import users from "../../../db/users.json";
 
 const NavBar = () => {
-  const style = Style();
   const params = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const usersState = useSelector((state) => state.users);
-  //TODO esta constante esta en mas de un lugar, se podria mover a un archivo de constantes
-  const pages = ["Tasks", "Statistics", "Admin"];
-  const capFirstLetter = (pageName) => {
-    pageName = pageName.slice(1);
-    return pageName.charAt(0).toUpperCase() + pageName.slice(1);
-  };
+  const url = window.location.pathname.split("/").pop();
 
+  const [selectedUser, setSelectedUser] = useState(users[0].firstName);
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const [selectedUser, setSelectedUser] = useState(users[0].firstName);
-  //TODO este 9 queda medio rari, no se recomienda usar numeros magicos
-  const [selectedPage, setSelectedPage] = useState(
-    capFirstLetter(window.location.pathname.slice(9))
-  );
+  const capital = (page) => page[0].toUpperCase() + page.slice(1);
 
   const handleUsers = (event) => {
     setSelectedUser(event.target.textContent);
     handleCloseUserMenu();
   };
-  const handlePages = (event) => {
-    setSelectedPage(event.target.textContent);
+  const handlePages = (page) => {
     handleCloseNavMenu();
-    navigate("/task-app/" + event.target.textContent);
+    navigate("/task-app/" + page);
   };
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  const handleOpenNavMenu = (event) => {setAnchorElNav(event.currentTarget)};
+  const handleOpenUserMenu = (event) => {setAnchorElUser(event.currentTarget)};
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
-  useEffect(() => {
-    setSelectedPage(capFirstLetter(window.location.pathname.slice(9)));
-  }, [window.location.pathname]);
+  const handleCloseNavMenu = () => {setAnchorElNav(null)};
+  const handleCloseUserMenu = () => {setAnchorElUser(null)};
 
   return (
     <AppBar sx={style.appBar}>
@@ -97,7 +63,7 @@ const NavBar = () => {
         </Box>
         <Box sx={style.box}>
           <IconButton onClick={handleOpenNavMenu} sx={style.iconButton}>
-            {selectedPage}
+            {capital(url)}
           </IconButton>
           <Menu
             anchorOrigin={style.topAndRight}
@@ -110,10 +76,14 @@ const NavBar = () => {
             onClose={handleCloseNavMenu}
           >
             {pages
-              .filter((page) => page !== selectedPage)
+              .filter((page) => page !== url)
               .map((page) => (
-                <MenuItem sx={style.menuItems} key={page} onClick={handlePages}>
-                  <Typography>{page}</Typography>
+                <MenuItem
+                  sx={style.menuItems}
+                  key={page}
+                  onClick={() => handlePages(page)}
+                >
+                  <Typography>{capital(page)}</Typography>
                 </MenuItem>
               ))}
           </Menu>
@@ -122,4 +92,5 @@ const NavBar = () => {
     </AppBar>
   );
 };
+
 export default NavBar;
